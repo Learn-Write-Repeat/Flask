@@ -26,8 +26,9 @@
 - Routes and View Functions
 - Create Simple Web Application
 
-## Templates
+<a name="module-2"/>
 
+## Templates
 > How Flask supports Templates and ease our presentation layer using Jinja2
 
 - Jinja2 Templating Engine
@@ -36,6 +37,8 @@
   2. Loops
   3. Template Inheritance
 
+<a name="module-3"/>
+
 ## Web Forms
  > How to create web forms in Flask to accept user data
 
@@ -43,6 +46,8 @@
 - Form Classes
 - Rendering HTML Forms
 - Form Handling
+
+<a name="module-4"/>
 
 ## Databases
 > Databases using Flask
@@ -53,15 +58,16 @@
 - CRUD Operations
 - Database Migrations using Flask-Migrate
 
+<a name="module-5"/>
 
 ## Email Support
-
 > How to send email using Flask
 
 - Email Support with Flask-Mail
 - Integration with Web App
 - Sending Asynchronous Email
 
+<a name="module-6"/>
 
 ## Application Programming Interfaces
 
