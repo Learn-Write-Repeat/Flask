@@ -1,4 +1,4 @@
-# TEMPLATES IN FLASK:
+# Topic 2: TEMPLATES IN FLASK:
 
 ## Jinja2 :
 * Jinja2 is a Python library that you can use to construct templates for various output formats from a core template text file. 
@@ -24,7 +24,7 @@ E.g., in our code we used,
 	return render_template('index.html', author='Swarada',Learning_flow= Learning_flow)
 ```
 
-### * Template Inheritance:
+* ### Template Inheritance:
 Templates ususally contains HTML skeleton, within blocks with the syntax:
 ```flask
 {% block body %}
@@ -33,7 +33,7 @@ Templates ususally contains HTML skeleton, within blocks with the syntax:
 ```
 The above block can be replaced by a block of the same name (body) in a child template. 
 
-### * Control Structure in Flask:
+* ### Control Structure in Flask:
 We know that is a block of programming that analyses variables and chooses its next step. Here we have used control structures using 'if',enclosed in delimiter {%..%}. Syntax: 
 ```flask
 {% if condition %}
@@ -41,7 +41,7 @@ We know that is a block of programming that analyses variables and chooses its n
 {% endif %}
 ```
 
-### * Loops in flask:
+* ### Loops in flask:
 Here, we have used 'for' loop, whose syntax is exact same as we normally use in python, except it is written within the block. Syntax:
 ```flask
 {% for i in range(0,len)%}
