@@ -14,31 +14,31 @@
 Template rendering can be done using 
 *render_template* function from the flask template package. It generates output from a template. We provide the name of the template and the variables we want to pass to the template engine as keyword arguments.
 E.g., in our code we used,
- ```python
+```python
 	return render_template('index.html', author='Swarada',Learning_flow= Learning_flow)
- ```
+```
 
 * Template Inheritance:
 Templates ususally contains HTML skeleton, within blocks with the syntax:
- ```flask
+```flask
 {% block body %}
  <!--CODE GOES HERE-->
 {% endblock %}
-  ```
+```
 The above block can be replaced by a block of the same name (body) in a child template. 
 
 * Control Structure in Flask:
 We know that is a block of programming that analyses variables and chooses its next step. Here we have used control structures using 'if'. Syntax: 
-  ```flask
+```flask
 {% if condition %}
 <!--Body-->
 {% endif %}
-  ```
+```
 
 * Loops in flask:
 Here, we have used 'for' loop, whose syntax is exact same as we normally use in python, except it is written within the block. Syntax:
-  ```flask
+```flask
 {% for i in range(0,len)%}
 <!--body of the loop-->
 {% endfor %}
-  ```
+```
