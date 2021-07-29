@@ -1,14 +1,14 @@
-#TEMPLATES IN FLASK:
+# TEMPLATES IN FLASK:
 
-##Jinja2 :
+## Jinja2 :
 *Jinja2 is a Python library that you can use to construct templates for various output formats from a core template text file. 
 *It can be used to create HTML templates. 
 *It has a rich API, and large array of syntactic directives (statements, expressions, variables, tags) that allow the dynamic injection of content into the templated file.
 
-##Templates in Flask:
+## Templates in Flask:
 *Templates are files that contain static data as well as placeholders for dynamic data. In simple language, templates are generally the blueprints of the html code that we're going to use in webpage, which will get rendered with data to produce a final document.
 
-##Operations on Templates:
+## Operations on Templates:
 
 *Template rendering:
 Template rendering can be done using 
