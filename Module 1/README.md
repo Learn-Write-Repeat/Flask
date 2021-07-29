@@ -12,11 +12,11 @@
 1. {% ... %} for Statements
 2. {{ ... }} for Expressions to print to the template output
 3. {# ... #} for Comments not included in the template output
-4. # ... ## for Line Statements
+4.  # ... ## for Line Statements
 
 ## Operations on Templates:
 
-* Template rendering:
+### * Template rendering:
 Template rendering can be done using 
 *render_template* function from the flask template package. It generates output from a template. We provide the name of the template and the variables we want to pass to the template engine as keyword arguments.
 E.g., in our code we used,
@@ -24,7 +24,7 @@ E.g., in our code we used,
 	return render_template('index.html', author='Swarada',Learning_flow= Learning_flow)
 ```
 
-* Template Inheritance:
+### * Template Inheritance:
 Templates ususally contains HTML skeleton, within blocks with the syntax:
 ```flask
 {% block body %}
@@ -33,7 +33,7 @@ Templates ususally contains HTML skeleton, within blocks with the syntax:
 ```
 The above block can be replaced by a block of the same name (body) in a child template. 
 
-* Control Structure in Flask:
+### * Control Structure in Flask:
 We know that is a block of programming that analyses variables and chooses its next step. Here we have used control structures using 'if',enclosed in delimiter {%..%}. Syntax: 
 ```flask
 {% if condition %}
@@ -41,7 +41,7 @@ We know that is a block of programming that analyses variables and chooses its n
 {% endif %}
 ```
 
-* Loops in flask:
+### * Loops in flask:
 Here, we have used 'for' loop, whose syntax is exact same as we normally use in python, except it is written within the block. Syntax:
 ```flask
 {% for i in range(0,len)%}
