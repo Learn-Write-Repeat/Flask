@@ -6,7 +6,13 @@
 * It has a rich API, and large array of syntactic directives (statements, expressions, variables, tags) that allow the dynamic injection of content into the templated file.
 
 ## Templates in Flask:
-*Templates are files that contain static data as well as placeholders for dynamic data. In simple language, templates are generally the blueprints of the html code that we're going to use in webpage, which will get rendered with data to produce a final document.
+* Templates are files that contain static data as well as placeholders for dynamic data. In simple language, templates are generally the blueprints of the html code that we're going to use in webpage, which will get rendered with data to produce a final document.
+* The jinja2 template engine uses the following delimiters for escaping from HTML.
+
+1. {% ... %} for Statements
+2. {{ ... }} for Expressions to print to the template output
+3. {# ... #} for Comments not included in the template output
+4. # ... ## for Line Statements
 
 ## Operations on Templates:
 
@@ -28,7 +34,7 @@ Templates ususally contains HTML skeleton, within blocks with the syntax:
 The above block can be replaced by a block of the same name (body) in a child template. 
 
 * Control Structure in Flask:
-We know that is a block of programming that analyses variables and chooses its next step. Here we have used control structures using 'if'. Syntax: 
+We know that is a block of programming that analyses variables and chooses its next step. Here we have used control structures using 'if',enclosed in delimiter {%..%}. Syntax: 
 ```flask
 {% if condition %}
 <!--Body-->
@@ -42,3 +48,4 @@ Here, we have used 'for' loop, whose syntax is exact same as we normally use in 
 <!--body of the loop-->
 {% endfor %}
 ```
+* After the code starts running, open localhost:5000 in the browser to get the output.
