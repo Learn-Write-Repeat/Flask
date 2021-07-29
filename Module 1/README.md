@@ -12,11 +12,11 @@
 1. {% ... %} for Statements
 2. {{ ... }} for Expressions to print to the template output
 3. {# ... #} for Comments not included in the template output
-4.  # ... ## for Line Statements
+4. #... # for Line Statements
 
 ## Operations on Templates:
 
-### * Template rendering:
+* ### Template rendering:
 Template rendering can be done using 
 *render_template* function from the flask template package. It generates output from a template. We provide the name of the template and the variables we want to pass to the template engine as keyword arguments.
 E.g., in our code we used,
