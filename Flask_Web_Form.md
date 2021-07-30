@@ -116,21 +116,23 @@ The **label** paremeters(i.e. 'Enter Your Name:' and 'Submit') are what will be 
 |NoneOf                | Validates that the input is none of a list of possible values                                             |
 
 ## 😄Rendering HTML Forms
-Form fields are callables that, when invoked from a template, render themselves to HTML. Assuming that the view function passes a NameForm instance to the template
+Form fields are callables that, when invoked from a template, render themselves to HTML. Assuming that the view function passes a GreetUserForm instance to the template
 as an argument named form, the template can generate a simple HTML form as follows:
 <pre>
 &lt;form method="POST"&gt;
     {{ form.hidden_tag() }}
-    {{ form.name.label }} {{ form.name() }}
+    {{ form.username.label }} {{ form.username() }}
     {{ form.submit() }}
 &lt;/form&gt;
 </pre>
-Note that in addition to the name and submit fields, the form has a form.hidden_tag() element. This element defines an extra form field that is hidden, used by Flask-WTF to 
+Note that in addition to the username and submit fields, the form has a form.hidden_tag() element. This element defines an extra form field that is hidden, used by Flask-WTF to 
 implement CSRF protection. Of course, the result of rendering a web form in this way is extremely bare. Any keyword arguments added to the calls that render the fields are converted into HTML attributes for the field—so, for example, you can give the field id or class attributes and then define CSS styles for them:
 <pre>
 &lt;form method="POST"&gt;
  {{ form.hidden_tag() }}
- {{ form.name.label }} {{ form.name(id='my-text-field') }}
+ {{ form.username.label }} {{ form.username(id='my-text-field') }}
  {{ form.submit() }}
 &lt;/form&gt;
 </pre>
+
+## 💼Form Handling in View Functions
