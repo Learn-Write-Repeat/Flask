@@ -62,7 +62,7 @@
  </pre>
  
  7.Now, let’s go to our powershell/terminal/cmd to start our Flask app:
- ***Here i am using windows powershell to run the flask app***
+ ***(Here i am using windows powershell to run the flask app)***
  
  First activate your virtual environment and write the following code step by step to get the url for your web form:
  
@@ -70,8 +70,9 @@
  
  8.Copy the url (in the last line of your powershell) in the browser to get your first web form:
  
- <img src="https://i.ibb.co/dgtCLxQ/Screenshot-214.png" alt="Screenshot-214" border="0"> 
- ✌***Congratulations! You made your first Web Form in Flask***
+ <img src="https://i.ibb.co/dgtCLxQ/Screenshot-214.png" alt="Screenshot-214" border="0">
+ 
+***✌ Congratulations! You made your first Web Form in Flask***
  
  **do visit me** :point_down:
 
