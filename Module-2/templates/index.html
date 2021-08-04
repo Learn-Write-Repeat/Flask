@@ -1,0 +1,68 @@
+{% extends 'block.html' %} <!--Template inherited-->
+{% block head %} 
+<title>{% block title %}{% endblock %}Flask Application</title>
+{% endblock %}
+
+{% block body %} 
+<body>
+    {% block content %}
+    {% block navbar %} 
+    
+        <table width="100%" cellpadding="5px" cellspacing="5px" align="center" bgcolor="black" >
+            <tr>
+                <td>
+                    <img src="https://cms-assets.tutsplus.com/uploads/users/30/posts/16037/preview_image/flask.png" width="100">
+                </td>
+                <td>
+                    <a style="color: white; font-size: x-large; align-content: center;" href="#">Home</a>
+                </td>	
+                <td>
+                    <a style="color: white; font-size: x-large; align-content: center;"  href="#">About</a>
+                </td>
+                <td>
+                    <a style="color: white; font-size: x-large; align-content: center;" href="#">Courses</a>
+                </td>
+                <td>
+                    <a style="color: white; font-size: x-large; align-content: center;" href="#">Code</a>
+                </td>
+                <td>
+                    <a style="color: white; font-size: x-large; align-content: center;" href="#">Blog</a>
+                </td>
+                
+            </tr>
+        </table>
+        
+        {% endblock %}
+  
+<h1>Introduction to Templates in Flask</h1>
+<h2>Welcome user!</h2>
+
+<!--Control structures in Templates-->
+{% if author %}
+  <p>Hello, I am {{ author }}: author of this page !</p>
+{% else %}
+  <p>Hello, World!</p>
+{% endif %}
+
+<h3>Flask learning flow: </h3>
+<ol>
+    <!-- For loop logic of jinja template -->
+    {%for i in Learning_flow%}
+      
+        <li>{{i}}</li>
+    {%endfor%}
+      
+</ol>
+
+
+<footer>
+
+<h1>Sample</h1>
+<p>End of the page</p>
+  
+{% endblock %}  
+</footer>   
+</body>
+{% endblock %}
+
+
