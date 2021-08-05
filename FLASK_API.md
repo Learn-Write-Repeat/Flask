@@ -45,6 +45,8 @@ REST technology is generally preferred to the more robust Simple Object Access P
 Flask makes it very easy to create RESTful web services. The familiar route() decorator along with its methods optional argument can be used to declare the routes that handle the resource URLs exposed by the service. The two formats commonly used with RESTful web services are JavaScript Object Notation (JSON) and Extensible Markup Language (XML). Working with JSON data is simple, as JSON data included with a request can be obtained in dictionary format by calling **request.get_json()**, and a response that needs to contain JSON can be easily generated from a Python dictionary using Flask’s jsonify() helper function.
 
 The following sections show how Flasky can be extended with a RESTful web servicethat gives clients access to blog posts and related resources:
-* **Creating an API Blueprint:**
-* 
+* **Creating an API Blueprint:**                                                                                                                                   
+Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. A blueprint in Flask is not a **pluggable app** because it is not actually an application – it’s a set of operations which can be registered on an application, even multiple times.                                                                                                                               The routes associated with a RESTful API form a self-contained subset of the application, so putting them in their own blueprint is the best way to keep them well organized. The general structure of the API blueprint within the application is                                                                                                             <pre>                        
+
+
 
