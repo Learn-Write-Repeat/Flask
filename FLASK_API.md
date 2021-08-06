@@ -46,7 +46,39 @@ Flask makes it very easy to create RESTful web services. The familiar route() de
 
 The following sections show how Flasky can be extended with a RESTful web servicethat gives clients access to blog posts and related resources:
 * **Creating an API Blueprint:**                                                                                                                                   
-Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. A blueprint in Flask is not a **pluggable app** because it is not actually an application – it’s a set of operations which can be registered on an application, even multiple times.                                                                                                                               The routes associated with a RESTful API form a self-contained subset of the application, so putting them in their own blueprint is the best way to keep them well organized. The general structure of the API blueprint within the application is                                                                                                             <pre>                        
+Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. A blueprint in Flask is not a **pluggable app** because it is not actually an application – it’s a set of operations which can be registered on an application, even multiple times.                                                                                                                                
+The routes associated with a RESTful API form a self-contained subset of the application, so putting them in their own blueprint is the best way to keep them well organized. The general structure of the API blueprint within the application is                                                                                                             
+<pre>
+ |-flasky
+   |-app/
+     |-api
+       |-__init__.py
+       |-users.py
+       |-posts.py
+       |-comments.py
+       |-authentication.py
+       |-errors.py
+       |-decorators.py
+</pre>
+The API blueprint implements each resource in a separate module. Modules to take care of authentication and error handling and to provide custom decorators are alsoincluded. The blueprint constructor is shown below:  
 
+***app/api/__init__.py: API blueprint creation***
+<pre>
+ from flask import Blueprint
+ api = Blueprint('api', __name__)
+ from . import authentication, posts, users, comments, errors
+</pre>
+The structure of the blueprint package constructor is similar to that of the other blueprints. Importing all the components of the blueprint is necessary so that routes and
+other handlers are registered. Since many of these modules need to import the api blueprint referenced here, the imports are done at the bottom to help prevent errors due to circular dependencies.
+The registration of the API blueprint is shown below:
 
-
+***app/init.py: API blueprint registration***
+<pre>
+ def create_app(config_name):
+     # ...
+     from .api import api as api_blueprint
+     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
+     # ...
+</pre>
+The API blueprint is registered with a URL prefix, so that all its routes will have their URLs prefixed with /api/v1. Adding a prefix when registering the blueprint is a good
+idea because it eliminates the need to hardcode the version number in every blueprint route.
