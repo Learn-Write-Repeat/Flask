@@ -45,7 +45,7 @@ REST technology is generally preferred to the more robust Simple Object Access P
 Flask makes it very easy to create RESTful web services. The familiar route() decorator along with its methods optional argument can be used to declare the routes that handle the resource URLs exposed by the service. The two formats commonly used with RESTful web services are JavaScript Object Notation (JSON) and Extensible Markup Language (XML). Working with JSON data is simple, as JSON data included with a request can be obtained in dictionary format by calling **request.get_json()**, and a response that needs to contain JSON can be easily generated from a Python dictionary using Flask’s jsonify() helper function.
 
 The following sections show how Flasky can be extended with a RESTful web servicethat gives clients access to blog posts and related resources:
-* **Creating an API Blueprint:**                                                                                                                                   
+* **🎯Creating an API Blueprint:**                                                                                                                                   
 Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. A blueprint in Flask is not a **pluggable app** because it is not actually an application – it’s a set of operations which can be registered on an application, even multiple times.                                                                                                                                
 The routes associated with a RESTful API form a self-contained subset of the application, so putting them in their own blueprint is the best way to keep them well organized. The general structure of the API blueprint within the application is                                                                                                             
 <pre>
@@ -82,3 +82,49 @@ The registration of the API blueprint is shown below:
 </pre>
 The API blueprint is registered with a URL prefix, so that all its routes will have their URLs prefixed with /api/v1. Adding a prefix when registering the blueprint is a good
 idea because it eliminates the need to hardcode the version number in every blueprint route.
+
+* **❌Error Handling:**                                                                                                                                         
+A RESTful web service informs the client of the status of a request by sending the appropriate HTTP status code in the response, plus any additional information in the response body.                                                                                                                                                     
+***Some of the HTTP response status codes typically returned by APIs are:***
+
+|HTTP status code | Name                  | Description                                                                                     |
+|-----------------|-----------------------|-------------------------------------------------------------------------------------------------|
+|200              | OK                    | The request was completed successfully.                                                         |
+|201              | Created               | The request was completed successfully and a new resource was created as a result.              |
+|202              | Accepted              | The request was accepted for processing, but it is still in progress and will run synchronously.|
+|204              | No Content            | The request was completed successfully and there is no data to return in the response.          |
+|400              | Bad Request           | The request is invalid or inconsistent.                                                         |
+|401              | Unauthorized          | The request does not include authentication information or the credentials provided are invalid.|
+|403              | Forbidden             | The authentication credentials sent with the request are insufficient for the request.          |
+|404              | Not Found             | The resource referenced in the URL was not found.                                               |
+|405              | Method Not Allowed    | The method requested is not supported for the given resource.                                   |
+|500              | Internal Server Error | An unexpected error occurred while processing the request.                                      |
+
+The handling of status codes 404 and 500 presents a small complication, in that these errors are normally generated by Flask on its own, and will return an HTML response. This can confuse an API client, which will likely expect all responses in JSON format. One way to generate appropriate responses for all clients is to make the error handlers adapt their responses based on the format requested by the client, a technique called content negotiation.
+Below example shows an improved 404 error handler that responds with JSON to web service clients and with HTML to others. The 500 error handler is written in a similar way.
+
+***app/api/errors.py: 404 error handler with HTTP content negotiation***
+<pre>
+@main.app_errorhandler(404)
+def page_not_found(e):
+    if request.accept_mimetypes.accept_json and \
+            not request.accept_mimetypes.accept_html:
+         response = jsonify({'error': 'not found'})
+         response.status_code = 404
+         return response
+    return render_template('404.html'), 404
+</pre>
+
+This new version of the error handler checks the Accept request header, which is decoded into request.accept_mimetypes, to determine what format the client wants the response in. Browsers generally do not specify any restrictions on response formats, but API clients typically do. The JSON response is generated only for clients that include JSON in their list of accepted formats, but not HTML.
+
+The remaining status codes are generated explicitly by the web service, so they can be implemented as helper functions inside the blueprint in the errors.py module.
+Below example shows the implementation of the 403 error; the others are similar.
+
+***app/api/errors.py: API error handler for status code 403***
+<pre>
+def forbidden(message):
+    response = jsonify({'error': 'forbidden', 'message': message})
+    response.status_code = 403
+    return response
+</pre>
+View functions in the API blueprint can invoke these auxiliary functions to generate error responses when necessary.
