@@ -92,7 +92,7 @@ The users attribute added to the model Role represents the object-oriented view 
 
 In most cases db.relationship() can locate the relationship’s foreign key on its own, but sometimes it cannot determine what column to use as a foreign key. For example, if the User model had two or more columns defined as Role foreign keys, then SQLAlchemy would not know which one of the two to use. Whenever the foreign key configuration is ambiguous additional arguments to db.relationship() need to be given.
 
-## Crude Operations
+## CRUD Operations
 CRUD operations are basically Create/Retrieve/Update or Delete operations.And a web application that deals with CRUD operations is known as a CRUD application. A typical example of a CRUD application is a Blog Website.
 
 
