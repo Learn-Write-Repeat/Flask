@@ -4,24 +4,24 @@
 
 A database stores application data in an organized way. The application then issues queries to retrieve specific portions of the data as they are needed. The most commonly used databases for web applications in flask are SQL and NoSQL.Here we are with some differences between them.
 
-|                             SQL	                     |                       NoSQL                                          |
-|:-----------------------------------------------------|:---------------------------------------------------------------------|
-|1) Databases are categorized as Relational Database   |1) NoSQL databases are categorized as Non-relational or distributed   |
-|   Management System (RDBMS).	                       |   database system.                                                   |
-|2)	SQL databases have fixed or static or predefined   |2) NoSQL databases have dynamic schema.                               |
-|   schema.                                            |                                                                      |
-|3) SQL databases display data in form of tables so it |3) NoSQL databases display data as collection of key-value pair,      |
-|    is known as table-based database.	               |   documents, graph databases or wide-column stores.                  |
-|4)	SQL databases are vertically scalable.	           |4) NoSQL databases are horizontally scalable.                         | 
-|5)	SQL databases use a powerful language "Structured  |5) In NoSQL databases, collection of documents are used to query the  |
-|   Query Language" to define and manipulate the data. |   data. It is also called unstructured query language.It varies from | 
-|                                                      |   database to database.                                              |
-|6)	SQL databases are best suited for complex queries. |6) NoSQL databases are not so good for complex queries because these  |
-|                                                      |   are not as powerful as SQL queries.                                |
-|7) SQL databases are not best suited for hierarchical |7) NoSQL databases are best suited for hierarchical data storage.     | 
-|   data storage.	                                     |                                                                      |
-|8)	MySQL, Oracle, Sqlite, PostgreSQL and MS-SQL etc.  |8) MongoDB, BigTable, Redis, RavenDB, Cassandra, Hbase, Neo4j, CouchDB| 
-|   are the example of SQL database.	                 |   etc. are the example of nosql database.                            |
+|                             SQL	                      |                       NoSQL                                          |
+|:------------------------------------------------------|:---------------------------------------------------------------------|
+|1) Databases are categorized as Relational Database    |1) NoSQL databases are categorized as Non-relational or distributed   |
+|   Management System (RDBMS).	                        |   database system.                                                   |
+|2)	SQL databases have fixed or static or predefined    |2) NoSQL databases have dynamic schema.                               |
+|   schema.                                             |                                                                      |
+|3) SQL databases display data in form of tables so it  |3) NoSQL databases display data as collection of key-value pair,      |
+|    is known as table-based database.	                |   documents, graph databases or wide-column stores.                  |
+|4)	SQL databases are vertically scalable.	            |4) NoSQL databases are horizontally scalable.                         | 
+|5)	SQL databases use a powerful language "Structured   |5) In NoSQL databases, collection of documents are used to query the  |
+|   Query Language" to define and manipulate the data.  |   data. It is also called unstructured query language.It varies from | 
+|                                                       |   database to database.                                              |
+|6)	SQL databases are best suited for complex queries.  |6) NoSQL databases are not so good for complex queries because these  |
+|                                                       |   are not as powerful as SQL queries.                                |
+|7) SQL databases are not best suited for hierarchical  |7) NoSQL databases are best suited for hierarchical data storage.     | 
+|   data storage.	                                      |                                                                      |
+|8)	MySQL, Oracle, Sqlite, PostgreSQL and MS-SQL etc.   |8) MongoDB, BigTable, Redis, RavenDB, Cassandra, Hbase, Neo4j, CouchDB| 
+|   are the example of SQL database.	                  |   etc. are the example of nosql database.                            |
 
 ## Database Management with Flask-SQLAlchemy
 
