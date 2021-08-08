@@ -89,6 +89,7 @@ Ex-hello.py: relationships in the database models
 A relationship connects two rows through the use of a foreignkey. The role_id column added to the User model is defined as a foreign key, and that establishes the relationship. The 'roles.id' argument to db.ForeignKey() specifies that the column should be interpreted as having id values from rows in the roles table.
 
 The users attribute added to the model Role represents the object-oriented view of the relationship, as seen from the“one” side. Given an instance of class Role, the users attribute will return the list of users associated with that role (i.e., the “many” side). The first argument to db.relationship() indicates what model is on the other side of the relationship. The model class can be provided as a string if the class is defined later in the module.The backref argument to db.relationship() defines the reverse direction of the relationship, by adding a role attribute to the User model. This attribute can be used on any instance of User instead of the role_id foreign key to access the Role model as an object.
+
 In most cases db.relationship() can locate the relationship’s foreign key on its own, but sometimes it cannot determine what column to use as a foreign key. For example, if the User model had two or more columns defined as Role foreign keys, then SQLAlchemy would not know which one of the two to use. Whenever the foreign key configuration is ambiguous additional arguments to db.relationship() need to be given.
 
 ## Crude Operations
@@ -203,6 +204,7 @@ The Delete View will just delete the Employee Information from the DB File.
 The Delete View will be:
 
 ![Screenshot (103)](https://user-images.githubusercontent.com/84977514/128625782-425733fb-bbc8-438c-ac30-730207dc4859.png)
+
 The delete.html just re-confirms the deletion:
 
 ![Screenshot (104)](https://user-images.githubusercontent.com/84977514/128625787-e20cf277-c56a-45d2-a4d3-20f202572eeb.png)
